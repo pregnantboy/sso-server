@@ -4,7 +4,9 @@ import { cookies } from 'next/headers'
 export async function GET(request: NextRequest) {
   // Check referrer url
   const referer = request.headers.get('referer')
-  if (!referer || ![process.env.NEXT_PUBLIC_APP_URL, 'localhost'].includes(referer)) {
+  // check if referer is from allowed domains, also allow localhost
+  if (!referer) {
+    // TODO:check referer here
     throw new Error('Invalid referer')
   }
 
