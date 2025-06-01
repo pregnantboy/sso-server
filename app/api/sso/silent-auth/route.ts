@@ -21,7 +21,7 @@ export async function GET(request: NextRequest) {
         <body>
           <script>
             window.parent.postMessage({
-              type: 'SSO_AUTH_FAILED',
+              type: 'SSO_AUTH_NONE',
               error: 'No session'
             }, '*');
           </script>
