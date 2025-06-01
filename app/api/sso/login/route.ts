@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
       cookieStore.set('sso_session', JSON.stringify(user), {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
+        sameSite: 'none', // for cross-origin requests
         maxAge: 60 * 60 * 24, // 24 hours
       })
 

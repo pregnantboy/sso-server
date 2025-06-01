@@ -2,6 +2,12 @@ import { type NextRequest, NextResponse } from 'next/server'
 import { cookies } from 'next/headers'
 
 export async function GET(request: NextRequest) {
+  // Check referrer url
+  const referer = request.headers.get('referer')
+  if (!referer || ![process.env.NEXT_PUBLIC_APP_URL, 'localhost'].includes(referer)) {
+    throw new Error('Invalid referer')
+  }
+
   const url = new URL(request.url)
   const client_id = url.searchParams.get('client_id')
   const redirect_uri = url.searchParams.get('redirect_uri')
