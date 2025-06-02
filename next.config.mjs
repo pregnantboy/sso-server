@@ -16,12 +16,12 @@ const nextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "frame-ancestors 'self' process.env.NEXT_PUBLIC_APP_URL http://localhost:*;"
-          }
-        ]
-      }
+            value: `frame-ancestors 'self' ${process.env.NEXT_PUBLIC_APP_URL} http://localhost:*;`,
+          },
+        ],
+      },
     ]
-  }
+  },
 }
 
 export default nextConfig
